@@ -21,7 +21,7 @@ Protocol     = "HTTP/1.0"
 if sys.argv[1:]:
     port = int(sys.argv[1])
 else:
-    random.randrange(8000,25000,1)
+    port = random.randrange(8000,25000,1)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("1.1.1.1", 80)) # Connect to a known server location. In this case, connect to Cloudflare DNS

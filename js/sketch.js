@@ -1,7 +1,8 @@
 let model_d20;
 let sphere;
 let model_wall;
-let image;
+let texture_1;
+let texture_2;
 let velocity;
 
 let G;
@@ -25,8 +26,6 @@ let cameraY;
 
 let lerp;
 
-
-
 let cameraMoveToX;
 let cameraMoveToY;
 let cameraMoveToZ;
@@ -41,7 +40,8 @@ function preload() {
   //model_wall = loadModel('/obj/cube.obj');
   sphere = loadModel('/obj/sphere.obj');
   font = loadFont('Roboto-Thin.ttf');
-  image = loadImage('StormWatchInn.jpg');
+  texture_1 = loadImage('/image/StormWatchInn.jpg');
+  texture_2 = loadImage('/image/Large city 2018-06-27T00_50_48.562Z.png');
 }
 
 function setup() {
@@ -83,7 +83,6 @@ function draw() {
   textSize(40);
   }
 
-
   // Moving camera Maybe ?
   {
   moveCamera(velocity.x_pos, velocity.y_pos);
@@ -98,14 +97,14 @@ function draw() {
 
   // Draw any models here
   push();
-    texture(image);
+    texture(texture_1);
     angleMode(DEGREES);
     rotateY(90);
     translate(0,-width/3);
     plane(height/2, height/2);
   pop();
   push();
-    texture(image);
+    texture(texture_2);
     angleMode(DEGREES);
     rotateY(180);
     translate(0,width/3);
