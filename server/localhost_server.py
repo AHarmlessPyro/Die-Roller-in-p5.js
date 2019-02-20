@@ -1,9 +1,9 @@
 import sys
-#import BaseHTTPServer
 import http
 import os
 from http.server import SimpleHTTPRequestHandler
-
+import socket
+import random
 
 class MyRequestHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -21,8 +21,11 @@ Protocol     = "HTTP/1.0"
 if sys.argv[1:]:
     port = int(sys.argv[1])
 else:
-    port = 8000
-server_address = ('127.0.0.1', port)
+    random.randrange(8000,25000,1)
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("1.1.1.1", 80)) # Connect to a known server location. In this case, connect to Cloudflare DNS
+server_address = (s.getsockname()[0], port) # Open a random port from 8000 to 25000
 
 HandlerClass.protocol_version = Protocol
 httpd = ServerClass(server_address, HandlerClass)
